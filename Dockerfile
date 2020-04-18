@@ -18,12 +18,8 @@ RUN set -ex; \
     if [ -n "$APT_PROXY_SSL" ]; then echo "Acquire::https { Proxy \"https://${APT_PROXY_SSL}\"; };" > /etc/apt/apt.conf.d/00proxy; fi; \
     apt-get --yes update; \
     apt-get --yes upgrade; \
-    # Build fix try 3
-    mv /var/lib/dpkg/info/libc-bin.* /tmp/; \
-    dpkg --remove --force-remove-reinstreq libc-bin; \
-    dpkg --purge libc-bin; \
-    apt install libc-bin; \
-    mv /tmp/libc-bin.* /var/lib/dpkg/info/; \
+    # Build fix try 4
+    rm /var/cache/ldconfig/aux-cache; \
     # End build fix
     apt-get --yes install \
         $buildDependencies \
