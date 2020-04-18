@@ -13,6 +13,7 @@ RUN set -ex; \
         libpcre3-dev \
         libssl-dev \
         zlib1g-dev \
+        libc-bin \
     "; \
     if [ -n "$APT_PROXY" ]; then echo "Acquire::http { Proxy \"http://${APT_PROXY}\"; };" > /etc/apt/apt.conf.d/00proxy; fi; \
     if [ -n "$APT_PROXY_SSL" ]; then echo "Acquire::https { Proxy \"https://${APT_PROXY_SSL}\"; };" > /etc/apt/apt.conf.d/00proxy; fi; \
