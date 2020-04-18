@@ -1,4 +1,4 @@
-[![Circle CI](https://circleci.com/gh/codeworksio/docker-nginx.svg?style=shield "CircleCI")](https://circleci.com/gh/codeworksio/docker-nginx)&nbsp;[![Size](https://images.microbadger.com/badges/image/codeworksio/nginx.svg)](http://microbadger.com/images/codeworksio/nginx)&nbsp;[![Version](https://images.microbadger.com/badges/version/codeworksio/nginx.svg)](http://microbadger.com/images/codeworksio/nginx)&nbsp;[![Commit](https://images.microbadger.com/badges/commit/codeworksio/nginx.svg)](http://microbadger.com/images/codeworksio/nginx)&nbsp;[![Docker Hub](https://img.shields.io/docker/pulls/codeworksio/nginx.svg)](https://hub.docker.com/r/codeworksio/nginx/)
+[![Circle CI](https://circleci.com/gh/dockeirorock/docker-nginx.svg?style=shield "CircleCI")](https://circleci.com/gh/dockeirorock/docker-nginx)&nbsp;[![Size](https://images.microbadger.com/badges/image/dockeirorock/nginx.svg)](http://microbadger.com/images/dockeirorock/nginx)&nbsp;[![Version](https://images.microbadger.com/badges/version/dockeirorock/nginx.svg)](http://microbadger.com/images/dockeirorock/nginx)&nbsp;[![Commit](https://images.microbadger.com/badges/commit/dockeirorock/nginx.svg)](http://microbadger.com/images/dockeirorock/nginx)&nbsp;[![Docker Hub](https://img.shields.io/docker/pulls/dockeirorock/nginx.svg)](https://hub.docker.com/r/dockeirorock/nginx/)
 
 Docker NGINX
 ============
@@ -8,14 +8,14 @@ Customised NGINX base image.
 Installation
 ------------
 
-Builds of the image are available on [Docker Hub](https://hub.docker.com/r/codeworksio/nginx/).
+Builds of the image are available on [Docker Hub](https://hub.docker.com/r/dockeirorock/nginx/).
 
-    docker pull codeworksio/nginx
+    docker pull dockeirorock/nginx
 
 Alternatively you can build the image yourself.
 
-    docker build --tag codeworksio/nginx \
-        github.com/codeworksio/docker-nginx
+    docker build --tag dockeirorock/nginx \
+        github.com/dockeiro/docker-nginx
 
 Testing
 -------

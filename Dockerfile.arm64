@@ -1,4 +1,4 @@
-FROM dockeirorock/ubuntu:amd64
+FROM dockeirorock/ubuntu:arm64
 
 # SEE: https://github.com/nginxinc/docker-nginx/blob/master/mainline/alpine/Dockerfile
 
