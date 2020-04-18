@@ -13,13 +13,18 @@ RUN set -ex; \
         libpcre3-dev \
         libssl-dev \
         zlib1g-dev \
-        libc-bin \
     "; \
     if [ -n "$APT_PROXY" ]; then echo "Acquire::http { Proxy \"http://${APT_PROXY}\"; };" > /etc/apt/apt.conf.d/00proxy; fi; \
     if [ -n "$APT_PROXY_SSL" ]; then echo "Acquire::https { Proxy \"https://${APT_PROXY_SSL}\"; };" > /etc/apt/apt.conf.d/00proxy; fi; \
     apt-get --yes update; \
     apt-get --yes upgrade; \
-    apt --fix-broken install; \
+    # Build fix try 3
+    mv /var/lib/dpkg/info/libc-bin.* /tmp/; \
+    dpkg --remove --force-remove-reinstreq libc-bin; \
+    dpkg --purge libc-bin; \
+    apt install libc-bin; \
+    mv /tmp/libc-bin.* /var/lib/dpkg/info/; \
+    # End build fix
     apt-get --yes install \
         $buildDependencies \
     ; \
