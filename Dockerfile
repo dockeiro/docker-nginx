@@ -1,4 +1,4 @@
-FROM dockeirorock/ubuntu:amd64
+FROM dockeirorock/ubuntu
 
 # SEE: https://github.com/nginxinc/docker-nginx/blob/master/mainline/alpine/Dockerfile
 
@@ -18,9 +18,6 @@ RUN set -ex; \
     if [ -n "$APT_PROXY_SSL" ]; then echo "Acquire::https { Proxy \"https://${APT_PROXY_SSL}\"; };" > /etc/apt/apt.conf.d/00proxy; fi; \
     apt-get --yes update; \
     apt-get --yes upgrade; \
-    # Build fix try 4
-    rm /var/cache/ldconfig/aux-cache; \
-    # End build fix
     apt-get --yes install \
         $buildDependencies \
     ; \
@@ -59,7 +56,7 @@ RUN set -ex; \
         /usr/local/nginx \
         /var/log/nginx; \
     \
-    apt-get purge --yes --auto-remove $buildDependencies; \
+    apt-get purge --yes --auto-remove --allow-remove-essential $buildDependencies; \
     rm -rf /tmp/* /var/tmp/* /var/lib/apt/lists/* /var/cache/apt/*; \
     rm -f /etc/apt/apt.conf.d/00proxy
 

@@ -8,19 +8,26 @@ Customised NGINX base image.
 Installation
 ------------
 
-Builds of the image are available on [Docker Hub](https://hub.docker.com/r/dockeirorock/nginx/).
-
-    docker pull dockeirorock/nginx
+```sh
+docker pull dockeirorock/nginx
+```
 
 Alternatively you can build the image yourself.
 
-    docker build --tag dockeirorock/nginx \
-        github.com/dockeiro/docker-nginx
-
-Testing
--------
-
-    make build test
+```sh
+git clone https://github.com/dockeiro/docker-nginx.git && \
+cd docker-nginx && \
+ARCH=$(dpkg --print-architecture)&& \
+echo ARCH loaded: ${ARCH} && \
+docker build --no-cache \
+--build-arg IMAGE=dockeirorock/nginx \
+--build-arg BUILD_DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ") \
+--build-arg VERSION=$(cat VERSION) \
+--build-arg VCS_REF=$(git rev-parse --short HEAD) \
+--build-arg VCS_URL=$(git config --get remote.origin.url) \
+--tag dockeirorock/nginx:$(cat VERSION)-${ARCH} \
+--rm .
+```
 
 Configuration
 -------------
@@ -30,5 +37,4 @@ Configuration
 TODO
 ----
 
-* Check GPG keys
-* Use `/var/cache/nginx` directory instead of `/usr/local/nginx`
+* None for now
