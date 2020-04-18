@@ -18,6 +18,7 @@ RUN set -ex; \
     if [ -n "$APT_PROXY_SSL" ]; then echo "Acquire::https { Proxy \"https://${APT_PROXY_SSL}\"; };" > /etc/apt/apt.conf.d/00proxy; fi; \
     apt-get --yes update; \
     apt-get --yes upgrade; \
+    apt-get --yes --reinstall install libc-bin; \
     apt-get --yes install \
         $buildDependencies \
     ; \
